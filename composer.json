@@ -1,0 +1,30 @@
+{
+    "name": "nocturnalsm/pendingupdate",
+    "description": "Laravel Pending Update Trait",
+    "type": "library",
+    "require": {
+        "illuminate/database": "~5.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bambang Sugiarto",
+            "email": "basugi99@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NocturnalSm\\PendingUpdate\\": "src"
+        }        
+    },
+    "extra": {        
+        "branch-alias": {
+            "master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "NocturnalSm\\PendingUpdate\\PendingUpdateServiceProvider"
+            ]
+        }
+    }
+}
