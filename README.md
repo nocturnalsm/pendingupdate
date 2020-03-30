@@ -1,4 +1,4 @@
-# Enable updates to be pending before it is applied
+# Laravel Pending Update
 
 This package basically is a trait that makes a model using it will pertain their original data when it is updated, while the updated fields will be stored to an update model. Later, you can apply the update or cancel the update
 
