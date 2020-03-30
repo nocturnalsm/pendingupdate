@@ -23,6 +23,49 @@ $model->applyUpdate();
 $model->cancelUpdate();
 
 ```
+## Instalation
+
+1. You can install the package with composer. Inside your Laravel project folder, type:
+
+```
+composer require nocturnalsm/pendingupdate
+```
+
+2. Optional: The service provider will automatically get registered. Or you may manually add the service provider in your ```config/app.php``` file.
+
+```php
+
+'providers' => [
+    // ...
+    NocturnalSm\PendingUpdate\PendingUpdateServiceProvider::class,
+];
+
+```
+
+3. Publish the migration files
+
+```
+php artisan vendor:publish --provider="NocturnalSm\PendingUpdate\PendingUpdateServiceProvider" --tag=migrations
+```
+
+4. And run the migration
+
+```
+php artisan migrate
+```
+
+5. Add the PendingUpdate trait to your model
+
+```php
+
+use NocturnalSm\PendingUpdate\PendingUpdate;
+
+class Model extends Model
+{
+    use PendingUpdate;
+}
+
+```
 
 ## Need a UI?
 
