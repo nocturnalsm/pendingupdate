@@ -1,17 +1,17 @@
 # Laravel Pending Update
 
-This package basically is a trait that makes a model using it will pertain their original data when it is updated, while the updated fields will be stored to an update model. Later, you can apply the update or cancel the update
+This package can make a model will pertain their original data when it is updated, while the updated fields will be stored to an update model. Later, you can apply the update or cancel the update
 
 Once installed you can do stuff like this:
 
 ```php
 
-// whenever a model is updated, the original data will be pertained;
 $model = Model::where("name", "Sugiarto");
 $model->name = 'Bambang';
+$model->pendingUpdate(); // put this after you've made the changes
 $model->save();
 echo $model->name;
-// this won't print 'Bambang', but still print 'Sugiarto'
+// this won't print 'Bambang', but will still print 'Sugiarto'
 // but if you do
 $model->usePending();
 echo $model->name;
@@ -64,6 +64,36 @@ class Model extends Model
 {
     use PendingUpdate;
 }
+
+```
+
+## Functions
+
+```php
+
+// pending the update
+$model->pendingUpdate();
+
+// apply update to the data
+$model->applyUpdate();
+
+// cancel the update and return the data to the original 
+$model->cancelUpdate();
+
+// return pending updates for the model
+$model->updates();
+
+// check if the pending data with the specified $key column has change
+$model->hasPendingValue($key);
+
+// get the pending value for a column specified with $key
+$model->getPendingValue($key);
+
+// make subsequent call to the data values to return the pending value
+$model->usePending(); 
+
+// make subsequent call to the data values to return the original value
+$model->useOriginal();
 
 ```
 

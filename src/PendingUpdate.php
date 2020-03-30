@@ -84,6 +84,16 @@ trait PendingUpdate
         return isset($key) 
                 && isset($this->pendingData->$key) ? $this->pendingData->$key->changes : false;
     }
+    public function useOriginal()
+    {
+        $pending = $this->pendingData;        
+        if ($pending){
+            foreach ($pending as $key=>$values){
+                $this->$key = $values->original;
+            }
+        }        
+        return $this;   
+    }
     public function usePending()
     {
         $pending = $this->pendingData;        
