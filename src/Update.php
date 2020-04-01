@@ -12,6 +12,10 @@ class Update extends Model
 
     protected $fillable = ['status','data'];    
 
+    public function model()
+    {
+        return $this->morphTo();
+    }
     public static function scopePending($query)
     {
         return $query->where('status', self::STATUS_PENDING);
